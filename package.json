@@ -13,13 +13,13 @@
     "bluebird": "^3.7.2",
     "connect-sqlite3": "^0.9.11",
     "express": "^4.17.1",
-    "express-session": "^1.17.0",
+    "express-session": "^1.17.1",
     "ldapjs": "^1.0.2",
     "lodash": "^4.17.15",
-    "mongoose": "^5.8.12",
+    "mongoose": "^5.9.10",
     "passport": "^0.4.1",
     "passport-openidconnect": "0.0.2",
-    "yaml": "^1.7.2"
+    "yaml": "^1.9.2"
   },
   "devDependencies": {}
 }
