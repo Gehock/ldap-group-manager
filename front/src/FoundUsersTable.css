@@ -1,0 +1,7 @@
+.selectedPersonRow {
+    background-color:lightgray !important;
+}
+
+.disabledPersonRow {
+    opacity: 0.6;
+}

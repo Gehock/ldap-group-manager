@@ -1,0 +1,26 @@
+.btn:disabled {
+  cursor:default;
+}
+
+.card > .card-header {
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+.card-header > h4 {
+  margin-bottom: 0px;
+}
+
+.accordion-chevron {
+  position: absolute;
+  right: 15px;
+  margin-bottom: 0px;
+  margin-top:0px;
+}
+
+.groupInfoTable {
+    table-layout: fixed;
+}
+
+.groupInfoTable tbody tr td:first-child { width: 180px; }
+.groupInfoTable tbody tr td { padding: 2px; }

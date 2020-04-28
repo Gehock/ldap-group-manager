@@ -1,0 +1,25 @@
+{
+  "name": "group-management",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "connect-sqlite3": "^0.9.11",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "ldapjs": "^1.0.2",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.8.12",
+    "passport": "^0.4.1",
+    "passport-openidconnect": "0.0.2",
+    "yaml": "^1.7.2"
+  },
+  "devDependencies": {}
+}
