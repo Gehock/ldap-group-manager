@@ -62,7 +62,11 @@ const makeLdapClient = async (reject) => {
     return new Promise((resolve, reject) => {
         const client = ldap.createClient({
             url: config.LDAP_URL,
-            reconnect: false
+            reconnect: false,
+//            tlsOptions: {
+//                ca: config.LDAP_CA,
+//		//checkServerIdentity: () => { return null; },
+//            }
         })
         client.bind(
             config.LDAP_BIND_DN,

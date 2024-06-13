@@ -11,6 +11,11 @@ class GroupInfoTable extends Component {
   }
 
   makeDisplayNameLine = (p) => {
+    if (!p || !p.dn || !p.displayName) {
+        console.log(p)
+        console.log(p.dn)
+        console.log(p.displayName)
+    }
     return <div key={p.dn}>{ p.displayName }</div>
   }
 
@@ -20,6 +25,7 @@ class GroupInfoTable extends Component {
 
   render() {
     const group = this.props.group;
+    if (group.managers.indexOf(null) >= 0) { console.log(group) }
     return (
       <Table className="groupInfoTable" size="sm">
         <tbody>
