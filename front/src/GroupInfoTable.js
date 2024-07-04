@@ -34,9 +34,11 @@ class GroupInfoTable extends Component {
       <Table className="groupInfoTable" size="sm">
         <tbody>
           {
-            group.description && <tr>
-              <td>Description</td><td colspan="2">{ group.description }</td>
-            </tr>
+            group.description ? (
+              <tr>
+                <td>Description</td><td colSpan="2">{ group.description }</td>
+              </tr>
+            ) : null
           }
           <tr>
             <td>Owners</td>
@@ -49,14 +51,20 @@ class GroupInfoTable extends Component {
             <td>{ group.managers.map(this.makeEmailLine) }</td>
           </tr>
           {
-            group.expires && <tr>
-              <td>Expires</td><td colSpan="2">{ group.expires }</td>
-            </tr>
+            group.expires ?
+            (
+              <tr>
+                <td>Expires</td><td colSpan="2">{ group.expires }</td>
+              </tr>
+            ) : null
           }
           {
-            group.comments && <tr>
-              <td>Comments</td><td colSpan="2">{ group.comments }</td>
-            </tr>
+            group.comments ?
+            (
+              <tr>
+                <td>Comments</td><td colSpan="2">{ group.comments }</td>
+              </tr>
+            ) : null
           }
         </tbody>
       </Table>
