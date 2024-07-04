@@ -11,10 +11,20 @@ class GroupInfoTable extends Component {
   }
 
   makeDisplayNameLine = (p) => {
+    if (!p) {
+      return <strong key="no-displayname">Error: no display name!</strong>
+    }
+    if (!p.dn || !p.displayName) {
+      console.log("group missing dn or displayName", p)
+      return <div key="missing-data">error</div>
+    }
     return <div key={p.dn}>{ p.displayName }</div>
   }
 
   makeEmailLine = (p) => {
+    if (!p) {
+      return <strong key="no-email">Error: no email!</strong>
+    }
     return <div key={p.dn}>{ p.mail }</div>
   }
 

@@ -20,7 +20,7 @@ class ManagedGroups extends Component {
   async componentDidMount() {
     let r = await fetch('/api/dataSources')
     this.config.dataSources = await r.json()
-    
+
     r = await fetch('/api/managedGroups')
     let groups = await r.json()
     groups = _.sortBy(groups, g => {
@@ -29,7 +29,7 @@ class ManagedGroups extends Component {
 
     _.forEach(groups, g => {
       _.forEach(g.owners, o => {
-        if (o == null) { console.log(g) }
+        if (o == null) { console.log("group with null owner", g.cn) }
       })
     })
 
@@ -184,7 +184,7 @@ class ManagedGroups extends Component {
             >
             </FormControl>
           </InputGroup>
-          
+
         </Col>
       </Row>
       <Accordion>
