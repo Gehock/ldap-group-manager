@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 /*
     OIDC auth modeled after guide:
-    https://developer.okta.com/blog/2018/05/18/node-authentication-with-passport-and-oidc 
+    https://developer.okta.com/blog/2018/05/18/node-authentication-with-passport-and-oidc
 */
 
 // express-session
@@ -63,10 +63,10 @@ const makeLdapClient = async (reject) => {
         const client = ldap.createClient({
             url: config.LDAP_URL,
             reconnect: false,
-//            tlsOptions: {
-//                ca: config.LDAP_CA,
-//		//checkServerIdentity: () => { return null; },
-//            }
+            tlsOptions: {
+               ca: config.LDAP_CA,
+                //checkServerIdentity: () => { return null; },
+           }
         })
         client.bind(
             config.LDAP_BIND_DN,
@@ -171,7 +171,7 @@ function parseGroupSearchResults(groups) {
 }
 
 function getUserManagedGroups(user) {
-    let pickedGroups; 
+    let pickedGroups;
     if ( ADMIN_USERNAMES.indexOf(user.username) >= 0 ) {
         pickedGroups = GROUPS;
     } else {
@@ -190,11 +190,22 @@ function ensureLoggedIn(req, res, next) {
         return next();
     }
 
+    console.log("not logged in")
+
     res.redirect('/login')
 }
 
 
-app.use('/login', passport.authenticate(config.PASSPORT_STRATEGY_NAME));
+// app.use('/login', passport.authenticate(config.PASSPORT_STRATEGY_NAME));
+app.use('/login', (req, res, next) => {
+    console.log("/login")
+    // res.redirect("/notfound")
+    const auth = passport.authenticate(config.PASSPORT_STRATEGY_NAME)
+    auth(req, res, next)
+    console.log("login done")
+    // return res.send("hello world")
+    return res.redirect('/')
+})
 
 app.use('/auth/callback',
     passport.authenticate(config.PASSPORT_STRATEGY_NAME, { failureRedirect: '/error' }),
@@ -333,7 +344,7 @@ app.get('/api/departmentGroups', ensureLoggedIn, async (req, res) => {
 })
 
 // Authenticated access to anything but login
-app.use([ensureLoggedIn, express.static(__dirname + "/front/build/")])
+app.use([express.static(__dirname + "/front/build/")])
 
 let ADMIN_USERNAMES = []
 ldapSearch({ filter: `(&(objectClass=group)(samaccountname=${ADMIN_GROUP_NAME}))`, scope: 'sub', attributes: ['memberUid'] })

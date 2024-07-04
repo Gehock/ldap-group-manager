@@ -17,9 +17,9 @@
     "rewire": "^4.0.1"
   },
   "scripts": {
-    "start": "PORT=3001 react-scripts start --writeToDisk",
-    "watch": "cra-build-watch",
-    "build": "PORT=3001 react-scripts build",
+    "start": "NODE_OPTIONS=--use-openssl-ca PORT=3001 react-scripts start --writeToDisk",
+    "watch": "NODE_OPTIONS=--use-openssl-ca cra-build-watch",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider PORT=3001 react-scripts build",
     "test": "PORT=3001 react-scripts test",
     "eject": "PORT=3001 react-scripts eject",
     "postinstall": "patch-package"
@@ -41,6 +41,8 @@
   },
   "devDependencies": {
     "cra-build-watch": "^3.2.0",
-    "patch-package": "^6.2.1"
-  }
+    "patch-package": "^6.2.1",
+    "react-scripts": "*"
+  },
+  "proxy": "http://localhost:3000"
 }

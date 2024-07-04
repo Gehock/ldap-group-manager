@@ -8,13 +8,14 @@ function StrategyMock(options, verify) {
 
 user_obj = {
         _json: {
-            preferred_username: ""
+            preferred_username: "laines5@aalto.fi"
         }
     } || { "username": "johndoe" };
 
 util.inherits(StrategyMock, passport.Strategy);
 
 StrategyMock.prototype.authenticate = function authenticate(req) {
+    console.log("mock.authenticate", user_obj)
     this.success( user_obj );
 }
 
